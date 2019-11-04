@@ -1,0 +1,51 @@
+select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1
+where CI_CLASSIFICATION  is NULL
+
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'Fixed Camera'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%FXD%'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'PTZ Camera'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%PTZ%'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'Jn DCPS'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%dcps%'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'Switch 4L2'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-4L2%'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'Switch 8L3'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-8L3%'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'Switch 8L2'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-8L2%'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'ADAM'
+where CI_CLASSIFICATION  is NULL and (DISPLAY_NAME like '%-adam%' or DISPLAY_NAME like '%_adam%')
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'PAS'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%_pas'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'LPU'
+where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%_lpu%'
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'ANPR Camera'
+where CI_CLASSIFICATION  is NULL and (DISPLAY_NAME like '%-an1' or DISPLAY_NAME like '%-an2' or DISPLAY_NAME like '%-an3' or DISPLAY_NAME like '%-an4')
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'Overview camera'
+where CI_CLASSIFICATION  is NULL and (DISPLAY_NAME like '%-ovc1' or DISPLAY_NAME like '%-ovc2')
+
+update DEVICE2M1
+set CI_CLASSIFICATION = 'ATCC Camera'
+where CI_CLASSIFICATION  is NULL and (DISPLAY_NAME like '%-at1' or DISPLAY_NAME like '%-at2' or DISPLAY_NAME like '%-at3' or DISPLAY_NAME like '%-at4')
