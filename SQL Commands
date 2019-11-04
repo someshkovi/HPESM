@@ -1,0 +1,4 @@
+#Open Closed tickets
+Update PROBSUMMARYM1
+SET STATUS ='open',PROBLEM_STATUS ='Work In Progress',CURRENT_PHASE= 'Investigation'
+where NUMBER ='IC216536'
