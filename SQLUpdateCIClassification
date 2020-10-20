@@ -1,4 +1,4 @@
-select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 here CI_CLASSIFICATION  is NULL;
+select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where CI_CLASSIFICATION  is NULL;
 
 update DEVICE2M1 set CI_CLASSIFICATION = 'Fixed Camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%FXD%';
 
@@ -23,3 +23,47 @@ update DEVICE2M1 set CI_CLASSIFICATION = 'ANPR Camera' where CI_CLASSIFICATION  
 update DEVICE2M1 set CI_CLASSIFICATION = 'Overview camera' where CI_CLASSIFICATION  is NULL and (DISPLAY_NAME like '%-ovc1' or DISPLAY_NAME like '%-ovc2');
 
 update DEVICE2M1 set CI_CLASSIFICATION = 'ATCC Camera' where CI_CLASSIFICATION  is NULL and (DISPLAY_NAME like '%-at1' or DISPLAY_NAME like '%-at2' or DISPLAY_NAME like '%-at3' or DISPLAY_NAME like '%-at4');
+
+update DEVICE2M1 set CI_CLASSIFICATION = 'Free Left camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%_free%';
+
+
+update DEVICE2M1 set CI_CLASSIFICATION = 'Workstation VC' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-pc0%';
+update DEVICE2M1 set CI_CLASSIFICATION = 'Workstation VC' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-pc1%';
+update DEVICE2M1 set CI_CLASSIFICATION = 'Workstation VC' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-pc2%';
+
+update DEVICE2M1 set CI_CLASSIFICATION = 'Internal Fixed camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-ifx%';
+
+update DEVICE2M1 set CI_CLASSIFICATION = 'ECB' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%_ecb%';
+
+update DEVICE2M1 set CI_CLASSIFICATION = 'Overview camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-ovc%';
+
+select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where Assignment  like 'Service Desk';
+
+select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where (Assignment  like 'Service Desk' and CI_CLASSIFICATION like 'Jn DCPS');
+
+
+
+select * from DEVICE2M1 where DISPLAY_NAME like 'sbh-x-rds_patny-x-road-ovc';
+
+select DISPLAY_NAME, IP_ADDRESS from DEVICE2M1 where NETWORK is NULL and IP_ADDRESS is not null;
+
+select DISPLAY_NAME, IP_ADDRESS from DEVICE2M1 where NETWORK is NULL and IP_ADDRESS like'10.99%';
+
+update DEVICE2M1 set NETWORK = 'RJIO' where NETWORK is NULL and IP_ADDRESS like'10.3%';
+
+update DEVICE2M1 set NETWORK = 'ACT' where NETWORK is NULL and IP_ADDRESS like'10.99.%';
+
+update DEVICE2M1 set NETWORK = 'Internal' where NETWORK is NULL and IP_ADDRESS like'10.66.%';
+
+
+update DEVICE2M1 set Assignment = 'Field DCPS' where (CI_CLASSIFICATION  like 'Jn DCPS' and Assignment  like 'Service Desk');
+
+update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like '%Camera%' and Assignment  like 'Service Desk');
+
+update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like 'Workstation VC' and Assignment  like 'Service Desk');
+
+update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like '%Switch%' and Assignment  like 'Service Desk');
+
+
+
+select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where (Assignment  like 'Service Desk');
