@@ -1,3 +1,4 @@
+
 select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where CI_CLASSIFICATION  is NULL;
 
 update DEVICE2M1 set CI_CLASSIFICATION = 'Fixed Camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%FXD%';
@@ -64,6 +65,23 @@ update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like
 
 update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like '%Switch%' and Assignment  like 'Service Desk');
 
+update DEVICE2M1 set Assignment = 'Field Devices' 
+where 
+	(
+		(CI_CLASSIFICATION  like 'LPU')
+		 or (CI_CLASSIFICATION  like 'PAS')
+		 or (CI_CLASSIFICATION  like 'ATCC Camera')
+		 or (CI_CLASSIFICATION  like 'ANPR Camera')
+		 or (CI_CLASSIFICATION  like 'ATCC Contoller')
+		 or (CI_CLASSIFICATION  like 'ECB')
+		 or (CI_CLASSIFICATION  like 'ECB Camera')
+		 or (CI_CLASSIFICATION  like 'Free Left camera')
+		 or (CI_CLASSIFICATION  like 'LPU')
+		 or (CI_CLASSIFICATION  like 'Overview camera')
+		 or (CI_CLASSIFICATION  like 'PAS')
+		 or (CI_CLASSIFICATION  like 'VMB')
+		 or (CI_CLASSIFICATION  like 'Wrong camera')
+	) and (Assignment  like 'Service Desk');
 
 
 select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where (Assignment  like 'Service Desk');
