@@ -1,4 +1,3 @@
-
 select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where CI_CLASSIFICATION  is NULL;
 
 update DEVICE2M1 set CI_CLASSIFICATION = 'Fixed Camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%FXD%';
@@ -38,6 +37,11 @@ update DEVICE2M1 set CI_CLASSIFICATION = 'ECB' where CI_CLASSIFICATION  is NULL 
 
 update DEVICE2M1 set CI_CLASSIFICATION = 'Overview camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-ovc%';
 
+update DEVICE2M1 set CI_CLASSIFICATION = 'Wrong camera' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-wrong%';
+
+update DEVICE2M1 set CI_CLASSIFICATION = 'VMB' where CI_CLASSIFICATION  is NULL and DISPLAY_NAME like '%-vmb%';
+
+
 select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where Assignment  like 'Service Desk';
 
 select DISPLAY_NAME,CI_CLASSIFICATION from DEVICE2M1 where (Assignment  like 'Service Desk' and CI_CLASSIFICATION like 'Jn DCPS');
@@ -64,6 +68,8 @@ update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like
 update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like 'Workstation VC' and Assignment  like 'Service Desk');
 
 update DEVICE2M1 set Assignment = 'Field Devices' where (CI_CLASSIFICATION  like '%Switch%' and Assignment  like 'Service Desk');
+
+
 
 update DEVICE2M1 set Assignment = 'Field Devices' 
 where 
